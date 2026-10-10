@@ -1,18 +1,19 @@
+
 import { Button } from "@heroui/react";
 import Image from "next/image";
 import bannerImag from "@/assect/bazar-hero.png"
 
 const Banner = () => {
-    // const date = new Date().toLocaleDateString("bn-BD", {
-    //     dateStyle: "full",
-    // });
+    const date = new Date().toLocaleDateString("bn-BD", {
+        dateStyle: "full",
+    });
     return (
     <div className="container mx-auto px-4 mt-8">
         <div className="flex flex-col lg:flex-row justify-between items-center gap-8 rounded-3xl px-6 py-5 md:px-10 border border-gray-200 bg-white shadow-sm">
             
             {/* Left Content */}
             <div className="space-y-4 w-full lg:w-1/2">
-                {/* <p className="bg-green-700 text-white w-60 p-2 rounded-2xl mb-5 text-center">{date}</p> */}
+                <p className="bg-green-700 text-white w-60 p-2 rounded-2xl mb-5 text-center">{date}</p>
                 <h1 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-gray-950 leading-tight">
                     আজকের বাজারের দাম এক নজরে
                 </h1>

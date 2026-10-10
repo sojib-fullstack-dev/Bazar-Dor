@@ -4,18 +4,13 @@ import CategoryList from "./CategoryList";
 import Link from "next/link";
 
 const Header = () => {
-    // const date = new Date().toLocaleDateString("bn-BD", {
-    //     dateStyle: "full",
-    // });
+    const date = new Date().toLocaleDateString("bn-BD", {
+        dateStyle: "full",
+    });
     return (
 
-        <div className="sticky top-0 z-50 bg-white">
-
-
-            
-            <div className="container mx-auto flex justify-between items-center px-4 md:px-6 py-3">
-
-        
+        <div className="sticky top-0 z-50 bg-white">           
+            <div className="container mx-auto flex justify-between items-center px-4 md:px-6 py-3">     
                 <Link href="/" className="flex items-center gap-3">
                     <span className="bg-green-500 text-white rounded-xl p-2 shadow-sm">
                         <PiShoppingCartLight size={32} />
@@ -26,7 +21,7 @@ const Header = () => {
                             বাজার দর
                         </h2>
                         <p className="text-xs text-gray-500">
-                            প্রতিদিনের বাজারের সঠিক তথ্য
+                           {date}
                         </p>
                     </div>
                 </Link>
