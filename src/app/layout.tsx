@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Marquee from "@/components/Marquee";
 import Footer from "@/components/Footer";
 import { ToastContainer } from "react-toastify";
+import { Toaster } from "react-hot-toast";
 
 
 const geistSans = Geist({
@@ -35,6 +36,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <main>{children}</main>
         <Footer/>
         <ToastContainer  />
+        <Toaster/>
         </body>
     </html>
   );

@@ -60,7 +60,7 @@ const SignInPage = (): React.JSX.Element => {
 
       const { error } = await signIn.social({
         provider,
-        callbackURL: "/category",
+        callbackURL: "/",
       });
 
       if (error) {
