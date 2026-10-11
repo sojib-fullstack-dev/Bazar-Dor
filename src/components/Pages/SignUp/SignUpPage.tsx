@@ -12,9 +12,10 @@ import {
 } from "@heroui/react";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-import toast from "react-hot-toast";
+
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const SignUpPage = (): React.JSX.Element => {
     const router = useRouter();
@@ -133,7 +134,7 @@ const SignUpPage = (): React.JSX.Element => {
           <Button
             type="button"
             isDisabled={isLoading || socialLoading !== null}
-            // onPress={() => handleSocialSignUp("github")}
+            onPress={() => handleSocialSignUp("github")}
             className="rounded-xl border-gray-200 bg-white font-semibold text-gray-700 transition hover:border-emerald-300 hover:bg-emerald-50"
           >
 

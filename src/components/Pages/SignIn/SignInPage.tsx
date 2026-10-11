@@ -10,11 +10,13 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
-import { usePathname } from "next/navigation";
+
 import { useState } from "react";
-import toast from "react-hot-toast";
+
+
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
+import { toast } from "react-toastify";
 
 const SignInPage = (): React.JSX.Element => {
 
@@ -110,7 +112,7 @@ const SignInPage = (): React.JSX.Element => {
             type="button"
            
             isDisabled={socialLoading !== null || isLoading}
-            // onPress={() => handleSocialSignIn("github")}
+            onPress={() => handleSocialSignIn("github")}
             className="h-12 rounded-xl border-gray-200 bg-white font-semibold text-gray-700 transition hover:border-emerald-300 hover:bg-emerald-50"
           >
             <FaGithub className="text-xl" />

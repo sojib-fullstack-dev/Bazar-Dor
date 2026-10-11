@@ -19,7 +19,7 @@ export const auth = betterAuth({
             clientSecret: process.env.BETTER_AUTH_GITHUB_CLIENT_SECRET as string, 
         }, 
     },
-    // 👇 ADD THIS CONFIGURATION HERE
+    // ADD THIS CONFIGURATION HERE
     account: {
         accountLinking: {
             enabled: true,
