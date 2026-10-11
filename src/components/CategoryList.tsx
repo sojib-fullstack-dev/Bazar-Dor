@@ -8,7 +8,7 @@ interface ICategory {
 }
 const CategoryList = async () => {
 
-    const res = await fetch("https://api.abcz.workers.dev/api/bazardor/categories")
+    const res = await fetch("https://openapi.programming-hero.com/api/bazardor/categories")
     const data: ICategory[] = await res.json()
     return (
         <div className="my-2">
