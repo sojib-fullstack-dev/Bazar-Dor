@@ -59,7 +59,7 @@ const Navbar = (): React.JSX.Element => {
                     স্বাগতম
                   </p>
 
-                <Link
+                   <Link
                   href="/my-Profile"
                   className="max-w-32 hover:opacity-80 transition"
                 >

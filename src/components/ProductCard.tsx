@@ -18,10 +18,10 @@ interface IProduct {
 const ProductCard = ({ product }: { product: IProduct }) => {
     // console.log(product)
 
-    const { data: session, isPending } = useSession();
+    const { data: session } = useSession();
     
     return (
-        <Link href={` ${session?.user ? `/product/${product.id}`: "/sign-in"}`}>
+        <Link href={session?.user ? `/product/${product.id}` : `/sign-in?callbackUrl=/product/${product?.id}`}>
 
             <div className=" bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between cursor-pointer">
                 {/* Top Section: Icon, Name, Unit */}

@@ -1,6 +1,7 @@
 "use client";
 
-import { signIn, signUp } from "@/lib/auth-client";
+import { handleSocialSignIn } from "@/components/Pages/HandleSocialSignIn";
+import {  signUp } from "@/lib/auth-client";
 import {
   Button,
   Description,
@@ -10,15 +11,15 @@ import {
   Label,
   TextField,
 } from "@heroui/react";
-import { useRouter } from "next/navigation";
+import {  useRouter } from "next/navigation";
 import { useState } from "react";
-
+import toast from "react-hot-toast";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { toast } from "react-toastify";
 
 const SignUpPage = (): React.JSX.Element => {
-    const router = useRouter();
+  const router = useRouter()
+  const call = "/"
   const [isLoading, setIsLoading] = useState(false);
   const [socialLoading, setSocialLoading] = useState<
     "google" | "github" | null
@@ -40,27 +41,24 @@ const SignUpPage = (): React.JSX.Element => {
       return;
     }
 
-    
-    // console.log({name, email, password, confirmPassword})
     try {
-        setIsLoading(true);
-        
-        const { data, error } = await signUp.email({
-            name,
-            email,
-            password,
-            callbackURL: "/",
-        });
-        
-        console.log(data, error)
+      setIsLoading(true);
+
+      const { data, error } = await signUp.email({
+        name,
+        email,
+        password,
+        callbackURL: "/",
+      });
+
       if (error) {
         toast.error(error.message || "অ্যাকাউন্ট তৈরি করা যায়নি!");
         return;
       }
 
       if (data) {
-        toast.success("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!");
-        router.push("/");
+          toast.success("অ্যাকাউন্ট সফলভাবে তৈরি হয়েছে!");
+          router.push("/")
       }
     } catch {
       toast.error("কিছু একটা সমস্যা হয়েছে। আবার চেষ্টা করুন।");
@@ -69,26 +67,7 @@ const SignUpPage = (): React.JSX.Element => {
     }
   };
 
-  const handleSocialSignUp = async (
-    provider: "google" | "github"
-  ) => {
-    try {
-      setSocialLoading(provider);
-
-      const { error } = await signIn.social({
-        provider,
-        callbackURL: "/",
-      });
-
-      if (error) {
-        toast.error(error.message || "সোশ্যাল সাইন আপ ব্যর্থ হয়েছে!");
-        setSocialLoading(null);
-      }
-    } catch {
-      toast.error("সাইন আপ করা যায়নি। আবার চেষ্টা করুন।");
-      setSocialLoading(null);
-    }
-  };
+  
 
   return (
     <main className="relative flex min-h-screen items-center justify-center overflow-hidden bg-gradient-to-br from-[#F0F5F0] via-white to-emerald-50 px-4 py-12">
@@ -116,35 +95,25 @@ const SignUpPage = (): React.JSX.Element => {
         </div>
 
         {/* Social Sign Up */}
-        <div className="flex items-center justify-center gap-16 ">
+        <div className="grid grid-cols-2 gap-3">
           <Button
             type="button"
             isDisabled={isLoading || socialLoading !== null}
-            onPress={() => handleSocialSignUp("google")}
-            className=" rounded-xl    border-gray-200 bg-white font-semibold text-gray-700 transition hover:border-emerald-300 hover:bg-emerald-50"
+            onPress={() => handleSocialSignIn("google", call, setSocialLoading)}
+            className="h-12 rounded-xl border-gray-200 bg-white font-semibold text-gray-700 transition hover:border-emerald-300 hover:bg-emerald-50"
           >
-
-            <span className="flex items-center gap-2 px-4 py-2">
-                
             <FcGoogle className="text-xl" />
             {socialLoading === "google" ? "অপেক্ষা করুন..." : "Google"}
-            </span>
           </Button>
 
           <Button
             type="button"
             isDisabled={isLoading || socialLoading !== null}
-            onPress={() => handleSocialSignUp("github")}
-            className="rounded-xl border-gray-200 bg-white font-semibold text-gray-700 transition hover:border-emerald-300 hover:bg-emerald-50"
+            onPress={() => handleSocialSignIn("github", call, setSocialLoading)}
+            className="h-12 rounded-xl border-gray-200 bg-white font-semibold text-gray-700 transition hover:border-emerald-300 hover:bg-emerald-50"
           >
-
-                <span className="flex items-center gap-2 px-4 py-2">
-                
-          
             <FaGithub className="text-xl" />
             {socialLoading === "github" ? "অপেক্ষা করুন..." : "GitHub"}
-            </span>
-
           </Button>
         </div>
 
@@ -158,9 +127,7 @@ const SignUpPage = (): React.JSX.Element => {
         </div>
 
         {/* Form */}
-        <Form 
-        onSubmit={onSubmit} 
-        className="flex flex-col gap-5">
+        <Form onSubmit={onSubmit} className="flex flex-col gap-5">
           <TextField
             isRequired
             name="name"
@@ -201,7 +168,7 @@ const SignUpPage = (): React.JSX.Element => {
               ইমেইল ঠিকানা
             </Label>
             <Input
-              placeholder="Your email address"
+              placeholder="bappi@example.com"
               className="h-12 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 text-gray-900 outline-none transition focus-within:border-emerald-500 focus-within:ring-4 focus-within:ring-emerald-100"
             />
             <FieldError className="text-sm text-red-500" />
