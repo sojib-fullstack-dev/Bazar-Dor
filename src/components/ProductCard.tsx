@@ -1,3 +1,5 @@
+"use client"
+import { useSession } from "@/lib/auth-client";
 import Link from "next/link";
 
 interface IProduct {
@@ -15,8 +17,11 @@ interface IProduct {
 
 const ProductCard = ({ product }: { product: IProduct }) => {
     // console.log(product)
+
+    const { data: session, isPending } = useSession();
+    
     return (
-        <Link href={`/product/${product.id}`}>
+        <Link href={` ${session?.user ? `/product/${product.id}`: "/sign-in"}`}>
 
             <div className=" bg-white border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all duration-200 flex flex-col justify-between cursor-pointer">
                 {/* Top Section: Icon, Name, Unit */}
