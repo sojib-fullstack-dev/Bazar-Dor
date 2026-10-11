@@ -168,7 +168,7 @@ const SignUpPage = (): React.JSX.Element => {
               ইমেইল ঠিকানা
             </Label>
             <Input
-              placeholder="bappi@example.com"
+              placeholder="Your email address"
               className="h-12 w-full rounded-xl border border-gray-200 bg-gray-50 px-4 text-gray-900 outline-none transition focus-within:border-emerald-500 focus-within:ring-4 focus-within:ring-emerald-100"
             />
             <FieldError className="text-sm text-red-500" />
